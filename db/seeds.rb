@@ -1,9 +1,17 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Create users
+first_user = User.create(name: 'Tom', photo: 'https://url-to-tom-photo.jpg', bio: 'Teacher from Mexico.')
+second_user = User.create(name: 'Lilly', photo: 'https://url-to-lilly-photo.jpg', bio: 'Teacher from Poland.')
+
+# Create posts by users
+first_post = Post.create(author: first_user, title: 'Hello from Tom', text: 'This is my first post')
+second_post = Post.create(author: second_user, title: 'Hello from Lilly', text: 'This is my second post')
+third_post = Post.create(author: second_user, title: 'Another post from Lilly', text: 'This is my third post')
+fourth_post = Post.create(author: first_user, title: 'Another post from Tom', text: 'This is my fourth post')
+
+# Create comments
+Comment.create(post: first_post, user: first_user, text: 'Hi Tom!')
+Comment.create(post: second_post, user: second_user, text: 'Hi Lilly!')
+Comment.create(post: second_post, user: first_user, text: 'Hi Tom 2!')
+Comment.create(post: second_post, user: second_user, text: 'Hi Tom 3!')
+Comment.create(post: first_post, user: first_user, text: 'Hi Lilly!')
+Comment.create(post: first_post, user: second_user, text: 'Hi Tom!')
