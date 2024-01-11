@@ -22,7 +22,7 @@ RSpec.describe Post, type: :model do
     subject.likes_counter = 'some string'
     expect(subject).to_not be_valid
   end
-  
+
   it 'returns the most recent comments' do
     user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Europe.')
     post = Post.create(author: user, title: 'testing title', text: 'hello from rspec', likes_counter: 0,
