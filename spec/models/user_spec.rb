@@ -24,8 +24,6 @@ RSpec.describe User, type: :model do
     Post.create(author: second_user, title: 'Hello', text: 'This is my fifth post')
 
     three_recent_posts = second_user.three_recent_posts
-    expect(three_recent_posts ).to eq(second_user.posts.order(created_at: :desc).limit(3))
+    expect(three_recent_posts).to eq(second_user.posts.order(created_at: :desc).limit(3))
   end
-  
-  
 end

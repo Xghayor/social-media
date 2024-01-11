@@ -11,14 +11,14 @@ RSpec.describe Comment, type: :model do
 
   describe 'validations' do
     it 'should validate presence of text' do
-      comment = Comment.create(user: user, post: post, text: 'Hi Tom!')
+      comment = Comment.create(user:, post:, text: 'Hi Tom!')
       expect(comment).to be_valid
     end
   end
 
   describe 'after_save' do
     it 'should update the post comments counter' do
-        comment = Comment.create(user: user, post: post, text: 'Hi Tom!')
+      comment = Comment.create(user:, post:, text: 'Hi Tom!')
       expect { comment.save }.to change { post.reload.comments_counter }.by(1)
     end
   end
