@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_user
 
   def index
-    @posts = @user.posts.all
+    @posts = @user.posts
   end
 
   def show
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
+    redirect_to root_path, alert: 'User not found' unless @user
   end
 end
