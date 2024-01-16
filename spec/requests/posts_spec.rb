@@ -16,7 +16,6 @@ RSpec.describe 'Posts', type: :request do
     end
   end
 
-
   describe 'GET /show' do
     let(:post) do
       user.posts.create!(title: 'Example Post', text: 'This is an example post', comments_counter: 0,
