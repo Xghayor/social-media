@@ -3,10 +3,10 @@ first_user = User.create(name: 'Tom', photo: 'https://url-to-tom-photo.jpg', bio
 second_user = User.create(name: 'Lilly', photo: 'https://url-to-lilly-photo.jpg', bio: 'Teacher from Poland.')
 
 # Create posts by users
-first_post = Post.create(author: first_user, title: 'Hello from Tom', text: 'This is my first post')
-second_post = Post.create(author: second_user, title: 'Hello from Lilly', text: 'This is my second post')
-third_post = Post.create(author: second_user, title: 'Another post from Lilly', text: 'This is my third post')
-fourth_post = Post.create(author: first_user, title: 'Another post from Tom', text: 'This is my fourth post')
+first_post = Post.create(author: first_user, title: 'Hello from Tom', text: 'This is my first post', comments_counter: 0, likes_counter: 0)
+second_post = Post.create(author: second_user, title: 'Hello from Lilly', text: 'This is my second post', comments_counter: 0, likes_counter: 0)
+third_post = Post.create(author: second_user, title: 'Another post from Lilly', text: 'This is my third post', comments_counter: 0, likes_counter: 0)
+fourth_post = Post.create(author: first_user, title: 'Another post from Tom', text: 'This is my fourth post', comments_counter: 0, likes_counter: 0)
 
 # Create comments
 Comment.create(post: first_post, user: first_user, text: 'Hi Tom!')

@@ -1,6 +1,11 @@
-<h1>Here are all posts by the user:</h1>
+<h1>Posts</h1>
 
-<% @posts.each do |post| %>
-  <p>User: <%= post.user.name %></p>
-  <p>Title: <%= post.title %></p>
-<% end %>
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, user_post_path(@user, post) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', user_path(@user) %>
