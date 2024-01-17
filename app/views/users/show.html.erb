@@ -1,2 +1,32 @@
+<%= stylesheet_link_tag 'users/show', media: 'all' %>
 
-<%= @user.name %>
+<div class="user-show-container">
+<%= render partial: 'user_details', locals: { user: @user } %>
+</div>
+
+<div class="user-bio-container">
+  <h2 class="h2-bio">Bio</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<div class="user-posts-container">
+  <h2>Recent Posts</h2>
+
+  <ul>
+    <% @user.three_recent_posts.each do |post| %>
+      <li class="posts-container">
+        <h3><%= "Post ##{post.id}" %></h3>
+        <h5><%= post.title %></h5>
+        <p class="post-text"><%= post.text %></p>
+        <p class="post-metadata">
+          <span class="comments-count">Comments: <%= post.comments.count %></span>
+          <span class="likes-count">Likes: <%= post.likes.count %></span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="bottom-button">
+  <%= button_to 'See All Posts', user_posts_path(@user), method: :get, class: 'last-btn' %>
+</div>

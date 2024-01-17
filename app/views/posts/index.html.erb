@@ -1,11 +1,35 @@
-<h1>Posts</h1>
+<%= stylesheet_link_tag 'posts/index', media: 'all' %>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= link_to post.title, user_post_path(@user, post) %>
-    </li>
-  <% end %>
-</ul>
+<div class="user-show-container">
+  <%= render partial: 'user_details', locals: { user: @user } %>
+</div>
 
-<%= link_to 'Back', user_path(@user) %>
+<div class="user-posts-container">
+  <ul>
+    <% @user.posts.each do |post| %>
+      <li>
+        <h2>
+          <%= link_to post.title, user_post_path(@user, post) %>
+        </h2>
+
+        <%= "#{post.text}" %>
+        <p class="post-metadata">
+          <span class="comments-count">Comments: <%= post.comments.count %></span>
+          <span class="likes-count">Likes: <%= post.likes.count %></span>
+        </p>
+
+        <ul class="comments-list">
+          <% post.five_recent_comments.each do |comment| %>
+            <li>
+              <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="last-btn">
+  <button class="back-link">Pagination</button>
+</div>
