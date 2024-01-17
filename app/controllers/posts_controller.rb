@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def new
     @post = Post.new
   end
@@ -14,14 +13,14 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
-    @post.update(comments_counter:0, likes_counter: 0)
+    @post.update(comments_counter: 0, likes_counter: 0)
     if @post.save
       redirect_to user_posts_path(current_user)
     else
       render :new
     end
   end
-  
+
 
   private
 
