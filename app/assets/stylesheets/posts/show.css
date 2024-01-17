@@ -1,0 +1,56 @@
+.post-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 20px;
+}
+
+.comments-likes {
+  margin-right: 20px; /* Adjust as needed */
+  margin-top: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+/* Styles for post information */
+p {
+  color: #777;
+  margin-top: 0;
+}
+
+strong {
+  color: #333;
+}
+
+/* Styles for the "Back" link */
+.back-link {
+  display: block;
+  margin-top: 20px;
+  color: #06c;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.post-text {
+  margin-top: 0;
+  color: black;
+  border: 1px solid black;
+  border-top: none;
+  padding: 20px;
+}
+
+.user-comments-container {
+  border: 1px solid black;
+}
+
+.user-comments-container ul {
+  list-style: none;
+  padding-left: 20px;
+}

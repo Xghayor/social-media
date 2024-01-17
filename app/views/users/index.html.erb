@@ -1,5 +1,14 @@
-<h1>Here is the list of all users:</h1>
+
+<%= stylesheet_link_tag 'users/index', media: 'all' %>
 
 <% @users.each do |user| %>
-  <p><%= user.name %></p>
+  <div class="home-users">
+    <div class="user-photo">
+      <img src="<%= user.photo %>" alt="user-photo">
+    </div>
+    <div class="user-data">
+      <h2><%= link_to user.name, user_path(user) %></h2>
+      <p class="posts-counter">Number of Posts: <%= user.posts_counter %></p>
+    </div>
+  </div>
 <% end %>

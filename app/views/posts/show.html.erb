@@ -1,3 +1,33 @@
-<h1><%= @post.title %></h1>
+<%= stylesheet_link_tag 'posts/show' %>
 
-<p><strong>Content:</strong> <%= @post.text %></p>
+<div class="post-container">
+<h1>
+  <p>Post <%= @user.posts.count %> by <%= @user.name %></p>
+</h1>
+
+
+  <div class="comments-likes">
+    <p>
+      <strong>Comments: <%= @post.comments_counter %></strong>,
+      <strong>Likes: <%= @post.likes_counter %></strong>
+      <%= form_with(url: user_post_likes_path(@user, @post), method: :post, local: true, class: 'like-form') do |form| %>
+        <%= form.submit 'Like', class: 'like-button' %>
+      <% end %>
+    </p>
+  </div>
+
+</div>
+
+<p class="post-text"><%= @post.text %></p>
+
+<div class="user-comments-container">
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to 'Back', user_posts_path(@user), class: 'back-link' %>

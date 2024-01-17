@@ -1,0 +1,30 @@
+
+.home-users {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px;
+}
+
+.user-photo {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.user-data {
+  border: 1px solid black;
+  width: 600px;
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.posts-counter {
+  color: rgba(11, 11, 67, 0.742);
+  text-align: right;
+}

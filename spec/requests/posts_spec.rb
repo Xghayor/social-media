@@ -13,6 +13,7 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to be_successful
       expect(response).to render_template(:index)
       expect(response.body).to include(post.title)
+      expect(response.body).to include(post.author.name)
     end
   end
 
