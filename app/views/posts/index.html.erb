@@ -30,6 +30,11 @@
   </ul>
 </div>
 
-<div class="last-btn">
+
+<div class="text-center mt-3">
+<%= link_to 'Create New Post', new_user_post_path(user_id: @user) , class: 'btn btn-success' %>
+</div>
+
+<div class="last-btn pagination">
   <button class="back-link">Pagination</button>
 </div>
