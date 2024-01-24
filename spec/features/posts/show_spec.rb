@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'Post', type: :feature do
   before :each do
     @user1 = User.create!(name: 'Martin', photo: 'https://unsplash.com/photos/1.jpg', bio: 'pianist.',
