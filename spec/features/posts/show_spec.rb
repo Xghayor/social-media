@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'Post', type: :feature do
   before :each do
     @user1 = User.create!(name: 'Martin', photo: 'https://unsplash.com/photos/1.jpg', bio: 'pianist.', posts_counter: 1)
@@ -13,7 +11,7 @@ RSpec.describe 'Post', type: :feature do
   describe 'Show page' do
     it "should display the post's title" do
       visit user_post_path(@user1, @post1)
-      
+
       expect(page).to have_content(@post1.title)
     end
 
@@ -61,3 +59,5 @@ RSpec.describe 'Post', type: :feature do
     end
   end
 end
+
+require 'rails_helper'
