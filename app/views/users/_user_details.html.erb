@@ -1,8 +1,9 @@
 <div class="user-image-container">
-  <img src="<%= user.photo %>" alt="<%= user.name %>">
+  <img src="<%= @user.photo %>" alt="<%= @user.name %>">
 </div>
 
 <div class="user-details-container">
-  <h1><%= user.name %></h1>
-  <p class="post-count">Number of posts: <%= user.posts.count %></p>
+  <h1><%= @user.name %></h1>
+  <p class="post-count">Number of Posts: <%= @user.posts.count %></p>
 </div>
+

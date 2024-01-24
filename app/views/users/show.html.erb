@@ -15,8 +15,10 @@
   <ul>
     <% @user.three_recent_posts.each do |post| %>
       <li class="posts-container">
-        <h3><%= "Post ##{post.id}" %></h3>
-        <h5><%= post.title %></h5>
+        <h3><%= "Post # #{post.id}" %></h3>
+        <%= link_to user_post_path(@user, post) do %>
+          <h5><%= post.title %></h5>
+        <% end %>
         <p class="post-text"><%= post.text %></p>
         <p class="post-metadata">
           <span class="comments-count">Comments: <%= post.comments.count %></span>
@@ -28,5 +30,6 @@
 </div>
 
 <div class="bottom-button">
-  <%= button_to 'See All Posts', user_posts_path(@user), method: :get, class: 'last-btn' %>
+  <%= link_to 'See All Posts', user_posts_path(@user), class: 'last-btn' %>
 </div>
+

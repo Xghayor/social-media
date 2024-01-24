@@ -2,6 +2,9 @@
 
 <div class="post-container">
 <h1>
+<% @user.posts.each do |post| %>
+  <h4><%= post.title %></h4>
+<% end %>
   <p>Post <%= @user.posts.count %> by <%= @user.name %></p>
 </h1>
 
@@ -30,4 +33,4 @@
   </ul>
 </div>
 
-<%= link_to 'Back', user_posts_path(@user), class: 'back-link' %>
+<%= link_to 'Back to Posts', user_posts_path(@user), class: 'back-link' %>

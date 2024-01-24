@@ -1,4 +1,3 @@
-
 <%= stylesheet_link_tag 'users/index', media: 'all' %>
 
 <% @users.each do |user| %>
@@ -7,8 +6,8 @@
       <img src="<%= user.photo %>" alt="user-photo">
     </div>
     <div class="user-data">
-      <h2><%= link_to user.name, user_path(user) %></h2>
-      <p class="posts-counter">Number of Posts: <%= user.posts_counter %></p>
+    <%= link_to user.name, user_path(id: user.id), class: 'user-link' %>
+      <p class="posts-counter">Number of Posts: <%= user.posts.count %></p>
     </div>
   </div>
 <% end %>

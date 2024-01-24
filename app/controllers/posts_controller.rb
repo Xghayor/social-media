@@ -1,19 +1,23 @@
 class PostsController < ApplicationController
-  def new
-    @post = Post.new
-  end
+  before_action :set_user
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.includes(:comments, :likes)
   end
 
   def show
     @post = @user.posts.find(params[:id])
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
-    @post = current_user.posts.create(post_params)
-    @post.update(comments_counter: 0, likes_counter: 0)
+    @post = current_user.posts.build(post_params)
+    @post.comments_counter = 0
+    @post.likes_counter = 0
+
     if @post.save
       redirect_to user_posts_path(current_user)
     else
@@ -22,6 +26,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)

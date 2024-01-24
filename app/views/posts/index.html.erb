@@ -6,7 +6,7 @@
 
 <div class="user-posts-container">
   <ul>
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <li>
         <h2>
           <%= link_to post.title, user_post_path(@user, post) %>
@@ -14,8 +14,8 @@
 
         <%= "#{post.text}" %>
         <p class="post-metadata">
-          <span class="comments-count">Comments: <%= post.comments.count %></span>
-          <span class="likes-count">Likes: <%= post.likes.count %></span>
+          <span class="comments-count">Comments: <%= post.comments_counter %></span>
+          <span class="likes-count">Likes: <%= post.likes_counter %></span>
         </p>
 
         <ul class="comments-list">
@@ -30,6 +30,11 @@
   </ul>
 </div>
 
-<div class="last-btn">
+
+<div class="text-center mt-3">
+<%= link_to 'Create New Post', new_user_post_path(user_id: @user) , class: 'btn btn-success' %>
+</div>
+
+<div class="last-btn pagination">
   <button class="back-link">Pagination</button>
 </div>
