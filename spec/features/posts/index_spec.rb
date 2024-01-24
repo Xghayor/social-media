@@ -70,7 +70,6 @@ RSpec.describe 'Post', type: :feature do
       expect(page).to have_current_path(user_post_path(user_id: @user1.id, id: @post1.id))
     end
 
-
     it 'Should display the section to create a new post' do
       visit user_posts_path(user_id: @user1.id)
       expect(page).to have_content('Create New Post')
