@@ -147,8 +147,10 @@ To run tests, run the following command:
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Ghayoor Ul Baqir**
+👤 **Bianca Lopez**
 
 - GitHub: [@Ghayoor](https://github.com/Xghayor)
+- GitHub: [@Bianca](https://github.com/BiancaMe)
 
 
 
