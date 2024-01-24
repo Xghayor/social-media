@@ -1,4 +1,3 @@
-# this is a comment
 require 'rails_helper'
 
 RSpec.describe 'Post', type: :feature do
@@ -10,6 +9,7 @@ RSpec.describe 'Post', type: :feature do
     @comment2 = Comment.create!(post: @post1, user: @user1, text: 'good!')
     @like1 = Like.create!(post: @post1, user: @user1)
   end
+
   describe 'Show page' do
     it "should display the post's title" do
       visit user_post_path(@user1, @post1)
