@@ -70,6 +70,16 @@ RSpec.describe 'Post', type: :feature do
       expect(page).to have_current_path(user_post_path(user_id: @user1.id, id: @post1.id))
     end
 
+    it 'should display pagination if there are more posts than fit on the view' do
+      15.times do
+        Post.create!(author: @user1, title: 'Additional Post', text: 'Additional text', comments_counter: 0,
+                     likes_counter: 0)
+      end
+
+      visit user_posts_path(user_id: @user1.id)
+      expect(page).to have_css('.pagination')
+    end
+
     it 'Should display the section to create a new post' do
       visit user_posts_path(user_id: @user1.id)
       expect(page).to have_content('Create New Post')
