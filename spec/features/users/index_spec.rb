@@ -1,42 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :feature do
-  let(:user) { User.create(name: 'Ali', photo: 'https://unsplash.com/photos/F_-0000BxGuVvo', bio: 'A pianist.') }
-  let(:post) { Post.create(author: user, title: 'hello', text: 'To the world') }
+  before :each do
+    @user1 = User.create!(name: 'Alex', photo: 'https://unsplash.com/photos/1.jpg', bio: 'Teacher from Mexico.',
+                          posts_counter: 3)
+    @user2 = User.create!(name: 'Mart', photo: 'https://unsplash.com/photos/2.jpg', bio: 'Teacher from Mexico.',
+                          posts_counter: 2)
+    @user3 = User.create!(name: 'Burak', photo: 'https://unsplash.com/photos/3.jpg', bio: 'Teacher from Mexico.',
+                          posts_counter: 0)
+  end
 
-  context 'displays' do
-    it 'displays user names' do
+  describe 'index page' do
+    it 'should display the username of all other users' do
       visit users_path
-      users = User.all
-      users.each do |user|
-        expect(page).to have_content(user.name)
-      end
+      expect(page).to have_content(@user1.name)
+      expect(page).to have_content(@user2.name)
+      expect(page).to have_content(@user3.name)
     end
 
-    it 'displays user photo' do
+    it 'should display the profile photo of all other users' do
       visit users_path
-      users = User.all
-      users.each do |user|
-        expect(page).to have_selector("img[src='#{user.photo}']")
-      end
+      expect(page).to have_css("img[src*='https://unsplash.com/photos/1.jpg']")
+      expect(page).to have_css("img[src*='https://unsplash.com/photos/2.jpg']")
+      expect(page).to have_css("img[src*='https://unsplash.com/photos/3.jpg']")
     end
 
-    it 'displays number of posts of each user' do
+    it 'should display the number of posts of all other users' do
       visit users_path
-      users = User.all
-      users.each do |user|
-        expect(page).to have_content("Number of posts: #{user.post_counter}")
-      end
+      expect(page).to have_content(@user1.posts.count)
+      expect(page).to have_content(@user2.posts.count)
+      expect(page).to have_content(@user3.posts.count)
     end
 
-    it 'redirects when clicked on a user' do
+    it 'should redirect to that users show page when clicking on the username' do
       visit users_path
-      users = User.all
-      users.each do |user|
-        click_link(user.name)
-        expect(page).to have_current_path(user_path(user))
-        visit users_path
-      end
+      click_link @user1.name
+      expect(page).to have_current_path(user_path(@user1))
     end
   end
 end
