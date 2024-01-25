@@ -10,8 +10,8 @@
 
   <div class="comments-likes">
     <p>
-      <strong>Comments: <%= @post.comments_counter %></strong>,
-      <strong>Likes: <%= @post.likes_counter %></strong>
+      <strong>Comments: <%= @post.comments.count %></strong>,
+      <strong>Likes: <%= @post.likes.count %></strong>
       <%= form_with(url: user_post_likes_path(@user, @post), method: :post, local: true, class: 'like-form') do |form| %>
         <%= form.submit 'Like', class: 'like-button' %>
       <% end %>

@@ -6,8 +6,8 @@ class Ability
 
     return unless user.present?
 
-    can :create, Post
-    can :create, Comment
+    can :create, Post, user: user
+    can :create, Comment, user: user
     can :read, User
 
     can :destroy, Post, author_id: user.id
