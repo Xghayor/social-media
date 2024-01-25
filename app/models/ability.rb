@@ -8,10 +8,9 @@ class Ability
 
     can :create, Post
     can :create, Comment
-    can :read, User
 
-    can :destroy, Post, author_id: user.id
-    can :destroy, Comment, user_id: user.id
+    can [:destroy], Post, author_id: user.id
+    can [:destroy], Comment, user_id: user.id
 
     return unless user.role == 'admin'
 
