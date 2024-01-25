@@ -1,13 +1,12 @@
 <%= stylesheet_link_tag 'posts/show' %>
 
 <div class="post-container">
-<h1>
-<% @user.posts.each do |post| %>
-  <h4><%= post.title %></h4>
-<% end %>
-  <p>Post <%= @user.posts.count %> by <%= @user.name %></p>
-</h1>
-
+  <h1>
+    <% @user.posts.each do |post| %>
+      <h4><%= post.title %></h4>
+    <% end %>
+    <p>Post <%= @user.posts.count %> by <%= @user.name %></p>
+  </h1>
 
   <div class="comments-likes">
     <p>
@@ -18,7 +17,6 @@
       <% end %>
     </p>
   </div>
-
 </div>
 
 <p class="post-text"><%= @post.text %></p>
@@ -34,3 +32,5 @@
 </div>
 
 <%= link_to 'Back to Posts', user_posts_path(@user), class: 'back-link' %>
+
+<%= link_to 'Add a Comment', new_user_post_comment_path(@user, @post), class: 'add-comment-link' %>
