@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     resource.update(role: 'admin') unless resource.role == 'admin'
     user_path(resource)
   end
-  
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password password_confirmation])
   end
