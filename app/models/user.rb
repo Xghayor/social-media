@@ -7,7 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates_numericality_of :posts_counter, only_integer: true, greater_than_or_equal_to: 0
 
-
   def three_recent_posts
     posts.order(created_at: :desc).limit(3)
   end
