@@ -23,11 +23,15 @@
 
 <div class="user-comments-container">
   <ul>
-    <% @post.comments.each do |comment| %>
-      <li>
-        <strong><%= comment.user.name %>:</strong> <%= comment.text %>
-      </li>
-    <% end %>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+      <% if can? :destroy, comment %>
+      <%= button_to 'Delete Comment', user_post_comment_path(comment.user, comment.post.id, comment), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+      <% end %>
+    </li>
+  <% end %>
+  
   </ul>
 </div>
 

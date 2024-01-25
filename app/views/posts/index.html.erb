@@ -1,3 +1,4 @@
+
 <%= stylesheet_link_tag 'posts/index', media: 'all' %>
 
 <div class="user-show-container">
@@ -25,14 +26,17 @@
             </li>
           <% end %>
         </ul>
+
+        <% if can?(:destroy, post) %>
+          <%= button_to "Delete Post", user_post_path(@user, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <% end %>
       </li>
     <% end %>
   </ul>
 </div>
 
-
 <div class="text-center mt-3">
-<%= link_to 'Create New Post', new_user_post_path(user_id: @user) , class: 'btn btn-success' %>
+  <%= link_to 'Create New Post', new_user_post_path(user_id: @user), class: 'btn btn-success' %>
 </div>
 
 <div class="last-btn pagination">
