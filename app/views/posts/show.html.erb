@@ -21,6 +21,10 @@
 
 <p class="post-text"><%= @post.text %></p>
 
+<% if can?(:destroy, @post) %>
+          <%= button_to "Delete Post", user_post_path(@user, @post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <% end %>
+
 <div class="user-comments-container">
   <ul>
   <% @post.comments.each do |comment| %>
