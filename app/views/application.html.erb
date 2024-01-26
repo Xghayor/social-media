@@ -11,6 +11,12 @@
   </head>
 
   <body>
+<div class= 'user-menu'>
+    <% if user_signed_in? %>
+    <%= link_to "<button>Edit</button>".html_safe, edit_user_registration_path %>
+    <% end %>
+      <%= button_to "LogOut", destroy_user_session_path, method: :delete %>
+  </div>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
