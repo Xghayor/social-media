@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post_and_user
+  load_and_authorize_resource
 
   def new
     @comment = Comment.new
@@ -13,6 +14,16 @@ class CommentsController < ApplicationController
       redirect_to user_posts_path(@user)
     else
       render :new
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
+
+    if @comment.destroy
+      redirect_to user_post_path(@user, @post), notice: 'Comment was successfully deleted.'
+    else
+      redirect_to user_post_path(@user, @post), alert: 'Error deleting comment.'
     end
   end
 
